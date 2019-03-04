@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8">
+	<title>Counting time</title>
+	<script type="text/javascript" src="timer.js "></script>
+</head>
+
+<body onload="counting();">
+		<div id="clock"></div>
+</body>
+</html>
