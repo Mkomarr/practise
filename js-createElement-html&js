@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>	
+<HTML lang="pl">
+<head>
+	<meta charset="utf-8">
+	<title>Dodawanie do listy</title>
+	
+	
+</head>
+<body>
+	<div id="wrapper">
+	
+	</div>
+<script src="app.js"></script>
+</body>
+</html>
+
+***
+
+var wrapper = document.getElementById("wrapper");
+var list = document.createElement("ul");
+wrapper.appendChild(list);
+var listElement = document.createElement("li");
+list.appendChild(listElement);
+listElement.innerHTML = "Paryż";
+
+var addBtn = document.createElement("button");
+addBtn.innerHTML = "Dodaj nowy element";
+wrapper.appendChild(addBtn);
+
+addBtn.addEventListener("click", function () {
+	var mylistElement = document.createElement("li");
+	list.appendChild(mylistElement);
+	mylistElement.innerHTML = "Barcelona";
+}, false);
