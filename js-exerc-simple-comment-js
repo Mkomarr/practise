@@ -1,0 +1,9 @@
+var addBtn = document.querySelector(".add-btn");
+var textarea = document.getElementById("comment-content");
+var list = document.querySelector(".comment-list");
+	addBtn.addEventListener("click", function() {
+		var li = document.createElement("li");
+		list.appendChild(li);
+		li.classList.add("comment");
+		li.innerHTML = '<div class="comment-content"><img src="#" width="40"; alt="user avatar"><p><strong>Adam</strong>: ' + textarea.value + '</p></div>';
+}, false);
