@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>	
+<HTML lang="pl">
+<head>
+	<meta charset="utf-8">
+	<title>Komentarze</title>
+	<style>
+	#wrapper 
+	{
+		max-width: 500px;
+	}
+	
+	.comments ul {
+	list-style: none;
+	max-width: 500px;
+	padding: 0;
+	}
+	
+	.comments .comment {
+	background-color: #edeff4;
+	overflow: hidden;
+	margin-bottom: 5px;
+	}
+	
+	.comments .comment-content p {
+	margin: 0;
+	}
+	
+	.comments li img {
+	vertical-align: top;
+	float: left;
+	margin-right: 15px;
+	}
+	
+	.add-comment {
+	clear: both;
+	}
+	
+	.add-comment .comment-field {
+	width: 500px;
+	height: 50px;
+	}
+	
+	.add-comment .add-btn {
+	float: right;
+	background-color: #5672ba;
+	border: 0;
+	color: #fff;
+	line-height: 25px;
+	}
+	</style>
+	
+	
+</head>
+<body>
+	<div id="wrapper">
+		<section class="comments" id="comments">
+			<ul class="comment-list">
+				<li class="comment">
+					<div class="comment-content"><img src="#" width="40"; alt="user avatar"><p><strong>Adam</strong>: Bardzo fajny komentarz!</p>
+					</div>
+				</li>
+				<li class="comment">
+					<div class="comment-content"><img src="#" width="40"; alt="user avatar"><p><strong>Adam</strong>: Bardzo fajny komentarz!</p>
+					</div>
+				</li>
+			</ul>
+		</section>
+		<section id="add-comment" class="add-comment">
+			<form>
+				<div>
+					<label for="comment-content">Treść:</label>
+					<textarea id="comment-content" class="comment-field"></textarea>
+					</div>
+					<div>
+						<button type="button" class="add-btn">Add comment</button>
+					</div>
+			</form>
+		</section>
+	</div>
+
+	<script src="app.js"></script>	
+</body>
+</html>
