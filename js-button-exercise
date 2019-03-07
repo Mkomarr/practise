@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8">
+	<title>Jak się cieszę?</title>
+	<style>
+		*
+	{
+		margin: 0;
+		padding: 0;
+	}
+
+	button
+	{
+		margin: 20px auto;
+		padding: 50px;
+		background-color: cadetblue;
+		color: white;
+		border: none;
+		display: block;
+		width: 80%;
+		border-radius: 10px;
+		font-size: 60px;
+		outline: 0;
+
+	}
+	button:hover
+	{
+		background-color: cornflowerblue;
+		cursor: pointer;
+		border: none;
+	}
+
+	button:visited
+	{
+		background-color: cornflowerblue;
+		cursor: pointer;
+		border: none;
+	}
+
+	button:link
+	{
+		background-color: cornflowerblue;
+		cursor: pointer;
+		border: none;
+	}
+
+	button:active
+	{
+		background-color: cornflowerblue;
+		cursor: pointer;
+		border: none;
+		outline: 0;
+	}
+
+	div
+	{
+		margin-top: 30px;
+		height: 400px;
+		font-family: monospace; roboto, arial;
+		font-size: 120px;
+		text-align: center;
+	}
+	</style>
+	
+	
+</head>
+
+<body>
+	<script>
+		window.onload=function() {
+		var przycisk = document.getElementById('button');
+		var kontener = document.getElementById("container");
+		przycisk.addEventListener("click", pokaz);
+
+		function pokaz() {
+		kontener.textContent = 'Baaaaaaardzo!!!! ;)';
+		}}
+	</script>
+	<button id="button">Jak się cieszę, kiedy js działa?</button>
+	<div id="container"></div>
+	
+</body>
+</html>
