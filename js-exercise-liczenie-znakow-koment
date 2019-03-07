@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Liczenie znaków komentarza</title>
+<style>
+	fieldset 
+	{
+		border: 0;
+		background-color: #7ad2f0;
+		width: 400px;
+		margin: auto;
+	}
+</style>
+</head>
+
+<body>
+	<form>
+		<fieldset class="form-fieldset">
+			<div class="field">
+				<label for="sms">SMS</label>
+				<textarea id="sms"></textarea>
+			</div>
+			<div id="ileznakow">
+			</div>
+			<div class="field">
+				<button type="button">Send it</button>
+		</fieldset>
+	</form>
+<script>
+	var textarea = document.getElementById("sms");
+	textarea.addEventListener("keyup", function () {
+		
+		var ileznakow = document.getElementById("ileznakow");
+		ileznakow.innerHTML = 'Napisałeś ' + textarea.value.length + ' znaków';
+		
+	}, false);
+
+</script>
+</body>
+</html>
