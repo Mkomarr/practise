@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+	<head>
+	<meta charset="utf-8">
+	<title>Javascript zmienne</title>
+	</head>
+	
+	<body>
+		<h1>Kurs JavaScript dla przyszłych świetnych programistów</h1>
+	<script>
+		/*
+    console.log(a);
+		var a = 5;
+			function one() {
+			console.log(b);
+			var b = 10;
+			}
+		one()
+		*/
+		
+		/*
+		ćwiczenie z https://youtu.be/9E5a6j8IIn4?t=733
+		console.log(a);
+		var a = 10;
+		console.log(a);
+		*/
+		
+		/*
+		ćwiczenie 2
+			one()
+				function one() {
+				console.log("działa");
+				}
+		*/
+		
+		//ćwiczenie 3 https://youtu.be/9E5a6j8IIn4?t=1010
+		function logName() {
+			console.log(name);
+			var name = "Witold";
+			console.log(user); //wykonywana jest właściwie tylko ta linijka kodu, hoistingowana na zasięg globalny
+			}
+		console.log(user);
+		var user = "Daria"; 
+		logName();
+	
+	</script>
+	</body>
+</html>
