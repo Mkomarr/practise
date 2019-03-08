@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+	<head>
+	<meta charset="utf-8">
+	<title>Javascript zmienne</title>
+	</head>
+	
+	<body>
+		<h1>Kurs JavaScript dla przyszłych świetnych programistów</h1>
+	<script>
+	/*Demo 1
+		var a = "zmienna globalna";
+		
+		function one() {
+			var a = "zmienna lokalna";
+			console.log(a);
+			}
+		
+		one();
+		console.log(a);
+		console.log("----------");
+	*/
+	
+	/*
+	//różnica pomiędzy zmienną lokalną, która jest niewidoczna globalnie
+		function one() {
+			var a = "zmienna lokalna";
+			console.log(a);
+			}
+		
+		one();
+		console.log(a);
+		console.log("----------");
+	*/
+	
+	/*
+		var a = "nic";
+		
+		if (true) {
+			var a = "coś";
+		}
+		console.log(a);
+		
+		let b = "nic";
+		
+			if (true) {
+			let b = "coś";
+		}
+		
+		console.log(b);
+	*/
+	
+	var a = "0";
+	
+	function one() {
+		//var a = "1"; //zmienna lokalna
+		console.log("zmienna w funkcji 1: " + a);
+		
+			function two() {
+			//var a = "2";
+			console.log("zmienna w funkcji 2: " + a);
+			
+				function three() {
+				//var a = "3";
+				console.log("zmienna w funkcji 3: " + a);
+				}
+				three()
+			}
+			two()
+		}
+		one()
+		console.log("zmienna w zasięgu globalnym: " + a);
+	
+	
+	</script>
+	</body>
+</html>
