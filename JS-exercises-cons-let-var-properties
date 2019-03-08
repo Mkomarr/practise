@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+	<head>
+	<meta charset="utf-8">
+	<title>Javascript var, let i const</title>
+	</head>
+	
+	<body>
+		<h1>Kurs JavaScript dla przyszłych programistów</h1>
+		<h2>czym różnią się zmienne zadeklarowane za pomocą var, let i const</h2>
+	<script>
+		
+   /*
+		var a = "a - zakres globalny";
+		let b = "b - zakres globalny";
+		const c = "c - zakres globalny";
+		
+		{
+			var a = "a - zakres lokalny";
+			let b = "b - zakres lokalny";
+			const c = "c - zakres lokalny";
+			console.log(a);
+			console.log(b);
+			console.log(c);
+		}
+		console.log(a); //a globalne jest nadpisane/zasłonięte przez a lokalne, które znajduje się niżej w kodzie
+		console.log(b);
+		console.log(c);
+				//https://youtu.be/zC1kHsUUOIE?t=522 wyjaśnienie
+    */
+	
+		/*
+    ćwiczenie https://youtu.be/zC1kHsUUOIE?t=566
+		function varTest() {
+			var a = true;
+				if (true) {
+					var a = false;
+					console.log(a); 
+				}
+			console.log(a);
+		}
+		varTest();
+		*/
+    
+		/* 
+    https://youtu.be/zC1kHsUUOIE?t=648
+		function letTest() {
+			let a = true;
+				if (true) {
+					let a = false;
+					console.log(a); 
+				}
+			console.log(a);
+		}
+		letTest();
+    */
+    
+		/*
+		var a = null; //1 zmienna
+		
+		function varTest() {
+		var a = true; //2 zmienna
+		if (true) {
+			var a = false; //3 zmienna nadpisana nad 2
+			console.log(a);//najpierw wykonuje się ta i daje false, bo warunek jest spełniony
+			}
+		console.log(a); //2 wykonuje się ta i daje true, bo var nadpisuje wartość lokalną nad globalną, bo lokalna znajduje się niżej w kodzie
+		}
+		varTest();
+		console.log(a);
+    */
+		
+		/*
+		const a = null; //1 zmienna, zakres globalny
+		function constTest() {
+		    const a = true; //2 zmienna, zakres lokalny - funckja
+		        if (true) {
+			          const a = false; //3 zmienna, zakres lokalny - blok kodu/instrukcja warunkowa if
+			          console.log(a); //najpierw wykonuje się ta i daje false, bo warunek jest spełniony
+			       }
+		        console.log(a); //2 wykonuje się ta i daje true, bo const nie nadpisuje
+		      }
+		    constTest();
+		    console.log(a); //3 wypluwana jest ta i daje null, bo bierze zmienną globalną z samego początku
+		*/
+				
+		/*
+    działanie hoistingu z var
+		console.log(a);
+		var a = "Ewa"; //wypluwa undefined, bo działa hoisting */
+		
+		/*
+    działanie hoistingu z let, czyli nie działanie, wyplywa błąd, że a jest undefined (const działa tak samo)
+		console.log(a);
+		let a = "Ewa";	
+		*/
+		
+		/*
+    tłumaczenie zasięgu globalnego
+		let a = 1;
+		const b = 2;
+		var c = 3;
+  	//po wpisaniu do konsoli window - tylko c pokaże się we właściwościach globalnych, ani let ani const tam nie będzie
+		*/
+		
+		/*
+    taki zapis wywala błąd
+		const a = 5;
+		a = 6;
+		*/
+		
+		const b = ["aaa", 973623];
+		b[2] = true; //pamiętaj, że silnik liczy od 0
+		console.log(b); 
+		//ta tablica będzie przypisana do zmiennej, ale sama tablica, czyli wartość możne się zmieniać, ewoluować, ale to będzie ten sam obiekt
+		
+	
+	</script>
+	</body>
+</html>
