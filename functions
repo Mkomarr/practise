@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+	<head>
+	<meta charset="utf-8">
+	<title>Funkcje, parametry, argumenty</title>
+	</head>
+	
+	<body>
+		<h1>Kurs JavaScript dla przyszłych programistów</h1>
+		
+	<script>
+	
+	/*
+	ćwiczenie https://youtu.be/pfK16DU1sQs?t=209 - funkcja dodająca 5 do podanej wartości
+	function addFive(a) {
+	let result = 5 + a;
+	console.log(result);
+	return result;
+	}
+	
+	let number = addFive(10);
+	*/
+	
+	/*
+	//https://youtu.be/pfK16DU1sQs?t=601
+	function a(b) {
+	return 3 + b;
+	}
+	*/
+	
+	/*
+	//parametry vs argumenty
+	function add(a,b,c) { //parametry
+		console.log(a,b,c);
+		return a + b + c;
+		}
+	
+	//add(2,3,4) //deklarujemy, przypisujemy argumenty do parametrów
+	add() //eśli nie przypiszemy argumentów wypluje NaN
+	console.log(add());
+	*/
+	
+	/*
+	function add(a,b,c) {
+		let a = 1;
+		let b = 2;
+		let c = 3;
+		console.log(a);
+		console.log(b);
+		console.log(c);
+		return a + b + c;
+		}
+		add();
+		//WAŻNE - wyskakuje błąd, bo próbowaliśmy dwa razy zadeklarować parametry a,b,c
+	*/
+	
+	/*
+	function add(a,b,c) {
+		a = 1; //tu już bez let, więc nie deklarujemy, a przypisujemy wartość/argument
+		b = 2;
+		c = 3;
+		console.log(a);
+		console.log(b);
+		console.log(c);
+		return a + b + c;
+		}
+		add();
+	// błąd już nie wyskakuje, ale to nie zadziała
+	*/
+	
+	/* https://youtu.be/gZ0av1nvbT0?t=682
+	function add(a,b,c) {
+		a = 1;
+		b = 2;
+		c = 3;
+		console.log(a);
+		console.log(b);
+		console.log(c);
+		return a + b + c;
+		}
+		console.log(add(3,4,5)); //argumenty przypisane przy wywołaniu nie zadziałają, bo w ciele funkcji zostały już raz przypisane na sztywno
+	*/
+	
+	/* pierwszy sposób na obejście problemu przypisywania argumentów
+	//https://youtu.be/gZ0av1nvbT0?t=747
+	function add(a,b,c) {
+		a = a || 0; //jeśli wywołując funkcję podamy argument 1, i jeśli jest true to już nie przejdzie do 0
+		b = b || 0; //ale jeśli nie podamy argumentu przy wywołaniu, czyli będzie false bo undefined = false, to wtedy funckja wypluje 0
+		c = c || 0;
+		console.log(a);
+		console.log(b);
+		console.log(c);
+		return a + b + c;
+		}
+		console.log(add());
+		//można też przypisać tylko 1 argument czyli add(2) funkcja wypluje nam 2 + 0 + 0 = 2
+	*/
+	
+	/*
+	
+	function add(a,b,c) {
+		if(a === undefined || typeof a === "string") a = 0; 
+		if(b === undefined || typeof b === "string") b = 0; 
+		if(c === undefined || typeof c === "string") c = 0; //nieco bardziej zaawansowane zastosowanie operatorów logicznych w funkcji, żeby wykryć czy argumenty są number czy nie 
+
+		console.log(a);
+		console.log(b);
+		console.log(c);
+		return a + b + c;
+		}
+		console.log(add(2,3,"coś tam"));
+		*/
+		
+	/* dopisanie domyślnych wartości paratmetów, które funkcja weźmie w przypadku braku któregoś argumentu
+		//https://youtu.be/gZ0av1nvbT0?t=1106
+	function multiply(a = 1, b = 1, c = 1) {
+		console.log(a,b,c);
+		return a * b * c;
+		}
+	multiply(2,3)
+	*/
+	
+	/*
+	function multiply(a = 10, b = a/5, c = b * a) {
+	console.log(a,b,c);
+	return a * b * c;
+	}
+	multiply();
+		// wynik 10 2 20
+		// 400
+	*/
+	
+	/*
+	multiply(undefined,4); 
+			//mamy domyślne wartości, więc silnik zrobi tak:
+				//1. weźmie undefined i zamieni ją na domyślną wartość - 10
+				//2. weźmie 4
+				//3. zrobi na c działanie b*a czyli 4*10=40
+			// https://youtu.be/gZ0av1nvbT0?t=1202
+	*/
+	
+	/*
+	//struktura arguments
+	function add() {
+	console.log(arguments.length); //metoda pokazuje ile argumentów przypisaliśmy do funkcji przy jej wywołaniu
+	};
+	add (3,4,5,6)
+	*/
+	
+	/*
+	function add() {
+	console.log(arguments.length, arguments[0])
+	}; //za pomocą tej metody możemy sprawdzić wartość indeksu o numerze 0
+	add(3,4,5,6);
+	//wynik 4 3 gdzie 4 to liczba zadeklarowanych przy wywołaniu funkcji argumentów, a 3 to wartość pierwszego (0) argumentu
+	*/
+	
+	/*funkcja uniwersalna z wykorzystaniem if
+	function add() {
+		console.log(`liczba argumentów przy wywołaniu ${arguments.length}`)
+		let wynik = 0;
+		if(arguments.length === 0) wynik = 0; //nie jest to konieczne
+		if(arguments.length === 1) wynik = arguments[0];
+		if(arguments.length === 2) wynik = arguments[0] + arguments[1];
+		return wynik;
+		}
+		add(10,5)
+		*/
+	
+	//funckja uniwersalna z wykorzystaniem pętli - https://youtu.be/gZ0av1nvbT0?t=1681
+	function add() {
+		let wynik = 0;
+		let args = arguments.length;
+		for (let i = 0; i < args; i++) {
+			wynik += arguments[i];
+			}
+		return wynik;
+	}
+		
+	
+	
+	</script>
+	</body>
+</html>
