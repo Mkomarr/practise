@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+	<head>
+	<meta charset="utf-8">
+	<title>Instrukcja warunkowa if</title>
+	</head>
+	
+	<body>
+		<h1>Kurs JavaScript dla przyszłych świetnych programistów</h1>
+		
+	<script>
+		/*
+		if (true) {
+		console.log("wykonałem if");
+		} else if (true) {
+		console.log("wykonałem else if");
+		}
+	// -> wykonałem if - wynik
+	*/
+	
+	/*
+	if (false) {
+		console.log("wykonałem if");
+		} else if (true) {
+		console.log("wykonałem else if");
+		}
+		//wynik -> wykonałem else iframe
+	*/
+	
+	/*
+	jak dodać więcej warunków?
+		if (warunek) {
+		kod uruchomiony TYLKO jeśli warunek1 będzie true, a poprzedni warunek był false
+		} else if (warunek2) {
+		kod uruchomiony TYLKO jeśli warunek2 będzie true, a poprzednie warunek i warunek2 były false 
+		} else if (warunek3) { 
+		kod uruchomiony TYLKO jeśli warunek3 będzie true, a poprzednie warunek, warunek2 i warunek3 były false  
+		} else {
+		kod uruchomiony TYLKO jeśli wszystkie poprzednie warunki były false}
+		// jeśli jest poniedziałek, zrób to.. itd
+	*/
+	2 && 0 ? alert("dobrze"): alert("źle"); //wynik "źle"
+	
+	/*const a = (0 && true) ? function () {} : function () {
+	alert("działa");
+	} //widać to w konsoli po wpisaniu a
+	*/
+	
+	
+	
+	
+	</script>
+	</body>
+</html>
