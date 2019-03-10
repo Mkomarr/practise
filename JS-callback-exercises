@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+	<head>
+	<meta charset="utf-8">
+	<title>Funkcje - callback</title>
+	</head>
+	
+	<body>
+		<h1>Kurs JavaScript dla przyszłych programistów</h1>
+		
+	<script>
+	 
+	 /*
+	 TAK DZIAŁA CALLABACK
+	 function dodaj(x,y) {
+		return x + y;
+		}
+		
+	 function odejmij(x,y) {
+		return x - y;
+		}
+	
+	 function calc(a,b,callback) {
+		console.log(`wprowadzone zostały wartości: ${a} i ${b}`);
+		return callback(a,b); //wywołujemy funckję, którą podaliśmy w funkcji calc (wyższego poziomu) 
+		}
+		
+	const wynik = calc(10,20,dodaj); //callbackiem tu jest funkcja dodaj - bez nawiasów
+	*/
+	
+	/*
+	function pokazWconsoli(x) {
+		console.log(x);
+		}
+	
+	function pokazAlert(x) {
+	alert(x);
+	}
+	
+	function pokazGdzies(x,callback) {
+	callback(x); //żeby użyć callbacka musze go zdefiniować jako parametr, a później wywołać w ciele funkcji wyższej 
+	//i wtedy wywołując funkcję pokazGdzieś jednocześnie wywołujemy callback
+	}
+	*/
+	
+	//przykłady wbudowanych funkcji wyższego rzędu
+	//setInterval(function() {console.log("coś")},1000); //napisane jako funkcja anonimowa
+	
+	/* 
+	//ta sama funcja, co wyżej, tylko inaczej napisana
+	function show() {
+	console.log("coś");
+	}
+	setInterval(show, 1000);
+	*/
+	
+	//inny przykład
+	document.addEventListener('click', function(){console.log("klik"); //zlicza kliknięcia w stronę
+	})
+	
+	/*//przykład z tablicami
+	const wiek = [6, 10, 40, 4]
+	wiek.sort()
+	console.log(wiek.sort(function(a,b){return a - b})); //function jako warunek, jak to ma być sortowane https://youtu.be/IS562tf6s6g?t=1151
+	*/
+	
+	//inny zapis powyższej funkcji
+	function odNajmniejszej(a,b) {
+	return a - b
+	};
+	const wiek = [6, 10, 40, 4];
+	wiek.sort();
+	console.log(wiek.sort(odNajmniejszej));
+	
+	//inny przykład 
+	const miasta = ['warszwa', 'łódź', 'kraKów']
+	const miastaUpper = miasta.map(function(city){return city.toUpperCase() // map() jest moetodą wywołującą daną funkcję dla wszystkich parametrów tablicy
+	});
+	console.log(miastaUpper);
+	
+	
+	/*//inny zapis powyższej funkcji, https://youtu.be/IS562tf6s6g?t=1369
+	const miasta = ['warszawa', 'łódź', 'kraKów']
+	function upper(city) {
+	return city.toUpperCase()
+	};
+	const miastaUpper = miasta.map(upper);
+	*/
+	
+	
+	</script>
+	</body>
+</html>
