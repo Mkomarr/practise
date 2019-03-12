@@ -1,0 +1,129 @@
+/*
+const condition = 2;
+if (condition) {
+	console.log("widzisz mnie, bo warunek jest prawdziwy i wykonuje zawartość bloku instrukcji warunkowej")
+};
+
+//przykład 2
+const userName = "Gabrysia";
+if (userName) {
+	console.log("Witaj " + userName);
+	
+}
+
+//przykład 3
+if (userName !== "") {
+	console.log("Witaj " + userName);
+}
+
+//instrukcja warunkowa (if)else
+const hasTicket = false;
+const moreThan15Years = true;
+const bossFamily = true;
+
+if (hasTicket && moreThan15Years || bossFamily) {
+	console.log("wchodzisz");
+} else {
+	console.log("Przykro mi, ale nie wejdziesz");
+}
+*/
+
+//instrukcja warunkowa else if
+const age = "dgnn"; //null zwróci 0
+
+/*
+//pokazany przykład nie jest optymalnym zapisem kodu, bo są 4 osobne instrukcje warunkowe
+if (age <= 9) {
+	console.log("jesteś jeszcze dzieckiem");
+} 
+if (age > 9 && age <= 18) {
+	console.log("jesteś młodzieżą");
+}
+if (age > 18 && age <= 70) {
+	console.log("cały świat przed Tobą");
+}
+if (age > 70) {
+	console.log("Ciesz się życiem!");
+}
+
+
+//optymalizuje się to za pomocą else if, jeden prawdziwy warunek kończy działanie funkcji
+if (age <= 9) {
+	console.log("jesteś jeszcze dzieckiem");
+} else if (age <=18) {
+	console.log("jesteś młodzieżą");
+} else if (age <= 70) {
+	console.log("cały świat przed Tobą");
+} else {
+	console.log("Ciesz się życiem!");
+};
+*/
+
+/*
+//bardziej skomplikowane przykłady - sprawdza czy wartość jest number, a jeśli nie to wyrzuca ostatni argument
+if (age <= 9) {
+	console.log("jesteś jeszcze dzieckiem");
+} else if (age <=18) {
+	console.log("jesteś młodzieżą");
+} else if (age <= 70) {
+	console.log("cały świat przed Tobą");
+} else if (age > 70) {
+	console.log("Ciesz się życiem!");
+} else if (typeof age === "string") {
+	console.log("Nie mogę ustalić Twojego wieku");
+};
+*/
+
+/*
+//zagnieżdzanie if w if
+const guestName = "Bolek";
+const guestAge = 13;
+
+if (guestName != "") {
+	if (guestAge > 18) {
+		console.log("Witaj w klubie " + guestName);
+	} else {
+		console.log("No niestety, masz za mało lat " + guestName + ", nie wejdziesz.");
+	}}	else {
+		console.log("Nie wiem jak masz na imię");
+	};
+*/
+
+//instrukcja warunkowa switch
+const dayOfTheWeek = "poniedziałek";
+switch (dayOfTheWeek) {
+	case "poniedziałek":
+		console.log("dziś poniedziałek");
+		break; //informacja, że jeśli ta instrukcja się wykona to silnik ma zakończyć działanie funkcji już teraz
+	case "wtorek":
+		console.log("dziś wtorek");
+		break;
+	case "środa":
+		console.log("dziś środa");
+		break;
+	default:
+		console.log("nie mam pojęcia jaki dziś dzień");
+		break;
+	};
+	
+//operator trójwarunkowy a ? b : c 
+const score = 100;
+20 === "20" && score ? console.log("wykonuje się, bo prawda") : console.log("wykonuje się bo warunek nie jest prawdziwy");
+false || true ? console.log("prawda") : console.log("fałsz");
+score > 120 ? console.log("prawda") : console.log("nie prawda");
+//z instrukcji warunkowej nie można przechwycić wartości i przypisać jej do zmiennej
+
+//przykład zwracania wartości
+//console.log(1 > 10 ? 1 : 0);
+
+let gameResult = 0;
+let killedMonsters = 11;
+gameResult += killedMonsters > 10 ? 1 : 0;
+//można też zamiast powiększać gameResult przypisać wynik do zmiennej - let score = killedMonsters > 10 ? 1 : 0
+//tak działa prosty mechanizm gry
+//gameResult będzie miało wartość 1, bo instrukcja zwróciła właśnie 1
+
+const playerName = "Kamil";
+console.log(`Witaj ${playerName ? playerName : "nieznajomy wojowniku"}`);
+	
+		
