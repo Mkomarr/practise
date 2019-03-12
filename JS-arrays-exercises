@@ -1,0 +1,49 @@
+const cityList = ["Wawa", "Lublin", "Białystok"];
+cityList[3] = "Gdańsk"; //dodawanie kolejnych wartości do tablicy, kolejnych indeksów
+cityList[4] = "Poznań";
+
+//konstruktor - pusta tablica, ale takie użycie nie ma sensu, bo ma minusy
+const gameItems = new Array();
+
+const nameList = ["Anna", "Kasia", "Justyna", "Zosia"];
+const popularName = nameList[1];
+nameList[3] = "Patrycja"; //nadpisanie Patrycji nad Zosię
+console.log(nameList[0] === "Anna");
+
+//usuwanie elementów z tablicy, usuwa tylko wartość, indeks zostaje jako empty
+delete nameList[1];
+console.log(nameList.length); //określa liczbę elementów w tablicy, ile posiada elementów
+
+//szybkie tworzenie długiej tablicy
+const longArray = [];
+longArray.length = 100;
+
+//odwołanie się do ostatniego elementu tablicy
+console.log(nameList[nameList.length - 1]);
+
+//dodanie ostatniego elementu, pierwszego, który nie jest zajęty, żeby nie nadpisać
+nameList[nameList.length] = "Kazimiera";
+
+//dodawanie pustych indeksów 
+nameList.length += 2;
+
+//skracanie tablicy tylko do dwóch indeksów
+//nameList.length = 2;
+//podobnie można ją wyzerować podając wartość = 0;
+
+//jak sprawdzić, czy object to jest na pewno tablica
+console.log(nameList instanceof Array); //można napisać warunek, żeby się wykonał tylko jeśli element ma instancję Array
+console.log(nameList instanceof String);
+
+//dereferencja - usuwamy wszystkie zmienne, które się do niego odwołują, nie zaśmieca pamięci
+let letters = ["aa", "bb"];
+let characters = letters;
+letters = null;
+characters = null;
+//albo tak letters = characters = null;
+
+//przypisanie destrukturyzujące 
+const [nameUser, idUser, ageUser] = ["Anna", 210, 54];
+
+const game = [120.12, 87, "dobry wujek"];
+let [time, points, name] = game; //inny sposób na destrukturyzację, czyli "wyjęcie" wartości z tablicy
