@@ -1,0 +1,46 @@
+//metody destruktywne
+
+const italianUsers = ["Giovanni", "Michele", "Angelo", "Luigi", "Valentina", "Marco"];
+
+//push - dodaj element na końcu tablicy i zwraca długość tablicy po dokonaniu zmiany
+italianUsers.push("Alessandra");
+
+//unshift - dodaj element na początku tablicy
+italianUsers.unshift("Tommaso");
+
+//usuń ostatni element z tablicy
+const deletedUser = italianUsers.pop(); //usuwamy element i przypisujemy go do zmiennej
+
+//usuń element na początku tablicy
+italianUsers.shift();
+
+//concat - łączenie wielu tablic do jednej - metoda niedestruktywna
+const redColors = ["czerwony", "zachodzące słońce", "krwisty"];
+const greeColors = ["zielony", "trawiasty", "morski"];
+
+const redAndGreenColors = redColors.concat(greeColors, ["zielone jabłko"]);
+
+//operator trzech kropek - spread
+const colorsCollections = [...redColors, ...greeColors];
+
+//slice
+const newItalian = italianUsers.slice(3);
+
+const animals = ["dog", "cat", "canary", "mouse"];
+//const newAnimals = animals.splice(3, 1, "hamster"); //usunięcie jednego elementu
+const neewAnimals = animals.splice(0, 1, "fish", "snake", "bird"); //usuwa dok 
+const addAnimals = animals.splice(0, 0, "rat"); //nie usuwa żadnego elelemtu z tablicy, a dodaje
+
+const fromAtoZ = ["Kazik", "Janek", "Adam", "Bartek", "Rafał", "Zenek"].sort(); //zwraca posortowane wartości od a do z
+animals.sort(); //sortuje i zmienia oryginalną tablicę
+italianUsers.sort();
+
+italianUsers.indexOf("Luigi"); //zwraca index w którym znajduje się wyszukiwana wartość, wyszykuje dokładnie zwrotu
+const searchSth = italianUsers.includes("a"); //sprawdza czy wartość jest w tablicy, zwraca true albo false
+
+italianUsers.join("-; \n"); //metoda zwracająca wartości tablicy jako string, domyślnie oddzielone przecinkiem, w nawiasie możemy podać inne rozdzielniki, np "-", /n oznacza br
+
+const namesUsers = "Ania Kasia Marek Piotrek Kazimiera".split(' ') //domyślnie wydziela każdą literę oddzielnie, chyba że pomiędzy " " wstawimy spację,
+const namesUsers1 = "Ania Kasia Marek Piotrek Kazimiera".split(' ', 3) //to samo tylko z ograniczoną liczbą elementów stworzonych w tablicy
+
+const dateOfBirth = "1987, 1980, 1979, 1957, 1999".split(", "); //uwaga na ", " - ta spacja też jest ważna i ją też trzeba ująć pomiędzy cudzysłowami
