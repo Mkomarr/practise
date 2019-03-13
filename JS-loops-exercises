@@ -1,0 +1,102 @@
+//prosta pętla z for
+/* 
+for (let i = 0; i < 10; i++) {
+	console.log("wyświetlenie " + i);
+};
+*/
+
+/* 
+let number = 0;
+while (number < 10) {
+	number++;
+	console.log(number);
+}
+*/
+
+/*
+//dopóki nasza zmienna przechowuje nie mniej niż 8 zł, to będzie się wykonywał kod 
+let money = 50;
+while (money >= 8) {
+	console.log("Mam jeszcze " + money + " złotych. To pijemy piwko.");
+	money -=8; //to wpływa na nasz warunek i zmienia go, odejmuje z money 8 zł
+};
+alert(`za ${money} złote, już się piwka nie napiję :((( :)))`);
+*/
+
+/*
+let gasoline = 40;
+let km = 0;
+
+while (gasoline--) { //dekrementacja, czyli odejmujemy paliwo, warunek brzmi: dopóki mamy paliwo, to wyświelamy blok kodu
+	km += 18; //każde wywołanie funkcji ma coś zrobić, tu powiększa += liczbę km
+	console.log("przejechaliśmy " + km + " kilometrów. Zostało nam jeszcze " + gasoline + " litrów benzyny");
+		if (gasoline == 1) {
+		console.log("Jedziesz na rezerwie. Zatankuj."); 
+		} else if (gasoline == 0) {
+			console.log("Nie masz już benzyny. Nigdzie nie pojedziesz.");
+		};
+		
+}
+*/
+
+/*
+//do... while - jeśli coś musimy wykonać raz a później sprawdzić czy warunek jest prawdziwy
+let study = "Nie, wyrzucili mnie.";
+do {
+	console.log("Idę do szkoły"); 
+	} while (study === true);
+*/
+
+/*
+for (let i = 0; i < 3; i++) { //najpierw wykonuje się ta pętla, później przechodzi do drugiej pętki wewnątrz
+	for (let j = 0; j < 3; j++) { //ta pętla wykonuje się 3 razy i przechodzi znów do głównej pętli
+		console.log(`zmienna i czyli ${i}, pomnożona przez zmienną j, czyli ${j}, da wynik ${i * j}`);
+	}
+}
+*/
+
+//pętla na tablicy
+/*i < usersAge.length - ta konstrukcja oznacza, że instrukcja ma się wykonywać dla danej długości tablicy, nasze i ma być mniejsze niż 7, czyli w tym przypadku długość tablicy
+const usersAge = [12, 18, 15, 45, 34, 33, 25].sort();
+
+for (let i = 0; i < usersAge.length; i++) { 
+	console.log(`wiek użytkownika numer ${i + 1} to ${usersAge[i]}`);
+}
+*/
+
+/*
+//obliczamy wiek użytkownika
+const userDateBirth = [2000, 1992, 1932, 1980];
+const currentYear = 2019;
+
+for (let i = 0; i < userDateBirth.length; i++) {
+	const userAge = currentYear - userDateBirth[i];
+	console.log(`wiek użytkownika numer ${i + 1} to ${userAge}`)
+};
+*/
+
+/*
+//for + instrukcja warunkowa
+const guest = ["piłkarz", "kucharz", "murarz", "programista", "polityk", "pisarz", "magazynier", "emeryt"];
+
+for (let i = 0; i < guest.length; i++) {
+	if (guest[i] === "programista") {
+		console.log("nie wpuszczać, programiści to nudziarze");
+	} else if (guest[i] === "murarz") {
+		console.log("nie wpuszczać, bo coś tam");
+	} else if (guest[i] === "polityk") {
+		console.log("nie wpuszczać, zepsują imprezę");
+	} else {
+		console.log(`Wpuść, ${guest[i]} jest ok`);
+	}
+};
+*/
+
+//pętla for of
+const colors = "red, green, black, yellow, white, gold, silver, brown".split(", ");
+
+for (const color of colors) {
+	console.log(color);
+}
+
+
