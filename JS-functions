@@ -1,0 +1,208 @@
+//WYRAŻENIE FUNKCYJNE
+/*const showMessage = function() { //funkcja anonimowa
+	console.log("wywołałam funkcję showMessage");
+}
+showMessage()
+*/
+
+/*
+const showMessage = function(message) {
+	console.log(message);
+}
+showMessage("tekst"); 
+*/
+
+//DEKLARACJA FUNKCJI
+function addNumber(number1, number2) {
+	return number1 + number2;
+}
+addNumber(2, 4)
+
+/*
+//FAT ARROW
+const multi = (a,b,c) => a * b * c;
+const showMyArrowTextFunction = (text) => console.log(text); 
+showMyArrowTextFunction("Działa? Działa!"); //parametr: argument czyli text: "Działa? Działa!"
+
+//funkcja która wpływa na program
+const divideBy2 = function(number) {
+	console.log(number / 2);
+}
+const result1 = divideBy2(10); //zwróci undefined bo nie określiliśmy, co ma zwrócić
+
+//funkcja która nie zwraca wartości
+let number = 0;
+const add = function() {
+	number++;
+	//console.log(number); //zwróci undefined
+}
+*/
+
+/*
+const divideBy3 = function(number) {
+	return number / 3; //określenie return i informacja co zwróci sprawia, że nie dostaniemy undefined
+}
+const result2 = divideBy3(9); //nic się nie wyświetli na tym etapie, bo ta funkcja nic nie robi z samym programem, ona tylko dzieli
+*/
+
+/*
+const divideBy5 = function(number) {
+	const result = number / 5;
+	console.log(result);
+	return result;
+} 
+const result3 = divideBy5(63);
+*/
+
+const showUserName = function(userName) {
+	console.log("Witaj " + userName);
+}
+//showUserName(); //pokaże nam "Witaj undefined"
+showUserName("Kasia"); //pokaże nam "Witaj Kasia"
+
+/*
+//wartość domyślna z fat arrow
+const addTwoNumbers = (x = 1, y = 2) => { //tu określamy wartość domyślne, będzie wykorzystane kiedy funkcja nie otrzyma argumnetu przy wywołaniu
+	const result = x + y;
+	console.log(result);
+	return result;
+}
+addTwoNumbers();
+*/
+/*
+const addThreeNumbers = function(x = 1, y = 0, z = 4) {
+	const result = x + y + z;
+	console.log(result); //bez console log nic w konsoli nie zobaczymy, chyba, że sami wywyołamy w niej funkcję
+	return result;
+}
+addThreeNumbers();
+*/
+
+//CALLBACK
+function count(x, callback) {
+	return callback(x);
+}
+
+function addOne(number) {
+	number++;
+	console.log(number);
+	return number;
+}
+
+function subtractOne(items) {
+	items--;
+	console.log(items);
+	return items;
+}
+
+const result = count(5, addOne);
+const result2 = count(4, subtractOne);
+const result3 = count(6, addOne);
+
+/*
+window.addEventListener("click", function() { //ta funkcja to jest callback
+	console.log("click");
+		})
+*/
+
+//inny zapis powyższej funkcji
+function showClick() {
+	console.log("click");
+}
+window.addEventListener("click", showClick);
+
+/*
+//setInterval(() => console.log("minęły 2 sekundy"), 2000);
+//albo inny zapis powyższej funkcji, można napisać tak:
+const showTime = () => {
+	console.log("Minęły 2 sekundy");
+}
+setInterval(showTime, 2000);
+*/
+
+/*
+const usersAge = [20, 30, 21, 43, 56, 57];
+usersAge.forEach(userAge1 => console.log(`wiek użytkownika to ${userAge1}`));
+usersAge.forEach(function(userAge1) { console.log("wiek użytkownika to " + userAge1); });
+*/
+
+//OBIEKT ARGUMENTS
+const  showArguments = function() {
+	console.log(arguments); //przypisana nazwa do obiektu
+	console.log(arguments.length); //ile argumentów przekazaliśmy
+	console.log(arguments[0]);
+	console.log(typeof arguments); //obiekt (tablicopodobny)
+	console.log(Array.isArray(arguments));
+}
+//showArguments("1", null, {});
+
+const addAllNumbers = function() {
+	let result = 0;
+	for (let i = 0; i < arguments.length; i++) {
+		result += arguments[i]
+	}
+	return result;
+}
+const usersMoney = addAllNumbers(3, 2, 200, 1, 3);
+
+//jak sprawić żeby funkcja zachowywała się inaczej przy różnych argumentach
+
+function showInfoAboutUser(age, name, sex) {
+	if (arguments.length === 0) {
+		console.log('nie mam żadnych inforamcji o tym użytkowniku');
+	} else if (arguments.length === 1) {
+		console.log('Użytkownik ma ' + age + ' lat. Nic więcej nie wiem');
+	} else if (arguments.length === 2) {
+		console.log(`Użytkownik ma ${age} lat i ma na imię ${name}`) 
+	} else {
+		console.log(`Użytkownik ma ${age} lat i nazywa się ${name} oraz jest ${sex}`)
+    }};
+
+//OPERATOR REST
+function showAllArguments(...items) {
+	console.log(items);
+	console.log(items[2]);
+	return items;
+}
+//showAllArguments("1", 2, 12, "ab", true, "Adam");
+
+function addAllWords(...words) {
+	let txt = "";
+	/*for (let i = 0; i < words.length; i++) {
+		txt += `${words[i]} `; //stary zapis txt += words[i] + ", ";
+	}*/
+	
+	/*
+	//forEach - inny sposób na osiągnięcie tego samego
+	words.forEach(function(word){
+		txt += word + " "; //nowy zapis txt =+ `${word} `;
+	});
+	*/
+	
+	words.forEach(word => txt += `${word} `);
+	console.log(txt);
+}
+//addAllWords("ja", "ty", 2, "Gdańsk")
+
+//dodawanie agumentów nie przypisanych do parametrów
+function showUsers(owner, ...others) {
+	console.log(`Na imprezie był ${owner}${others.length ? " oraz " + others + "." : "."}`);
+}
+//showUsers("Adrian", "Kasia", "Madzia", "Jasiek");
+ 
+//funcje a metody w obiektach
+const objectExample = {
+	name: "Adam",
+	showName: function() {
+		console.log("Jan")
+	},
+	showAge() {
+		console.log(30);
+	}
+}
+objectExample.showName();
+objectExample.showAge();
+const showName = function() {
+		console.log("Jan")
+	};
+showName();
