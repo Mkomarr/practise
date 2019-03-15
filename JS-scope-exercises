@@ -1,0 +1,147 @@
+var varFun = "a";
+let letFun = "b";
+const constFun = "c"
+
+function variablesInFunction() {
+	var inFunction = "jestem";
+	//var varFun = 4;
+	const constFun = 6;
+		function showVariable() {
+			const constFun = "Funckja w funkcji";
+			varFun = "nadpisuje wartość zmiennej z wyższego zakresu";
+			//console.log(varFun);
+			//console.log(letFun);
+			//console.log(constFun);
+		}
+showVariable();
+}
+variablesInFunction();
+
+//przyklad 2
+function calculate(a, b) {
+	const number1 = a;
+	const number2 = b;
+	//console.log(a);
+	//console.log(b);
+	//console.log(number1);
+	//console.log(number2);
+	
+	function add() {
+		number2 = 10;
+		//const number2 = 10;
+		console.log(number1 + number2); //silnik szuka zmiennych w zakresie nadrzednym
+	}
+	add();
+}
+//calculate(2, 3);
+
+//przyklad 3
+function calculate(a, b) {
+	const number1 = a;
+	const number2 = b;
+	
+	function add(x, y) {
+		console.log(x + y); 
+	}
+	add(number1, number2);
+}
+//calculate(2, 3);
+
+//ZAKRES BLOKOWY
+let var1 = 1;
+const var2 = 2;
+var var3 = 3;
+
+{
+	let var1 = "wewnętrzne 1";
+	const var2 = "wewnętrzne 2";
+	var var3 = "wewnętrzne 3";
+	//console.log(var1);
+	//console.log(var2);
+	//console.log(var3);
+}
+
+//console.log(var1); //zwraca 1
+//console.log(var2); //zwraca 2
+//console.log(var3); //zwraca "wewnętrzne 3"
+
+//przykład 2 zakresu blokowego
+const a = "1 w zakresie globalnym";
+let b = "2 w zakresie globalnym";
+var c = "3 w zakresie globalnym";
+
+if (true) {
+	//console.log(a);
+	//a = "Przypisanie do a? Ale którego?"; //powoduje błąd, bo przypisanie do const
+	const a = "a w bloku"; //console.log(a) umieszczone wyżej powoduje błąd, bo choć nie ma deklaracji, to silnik ma to a w pamięci, wie, że to a będzie
+	//console.log("a w bloku to: " + a); //zwróci a w bloku to: a w bloku
+	b = "b w bloku";
+	//console.log("b w bloku to: " + b); //zwróci b w bloku to: b w bloku, nadpisuje b nad zakres globalny
+	var c = "3 w bloku";
+}
+//console.log(a); //zwróci a w zakresie globalnym
+//console.log(c); //zwróci nadpisaną zmienną lokalną, bo var nie rozróżnia zakresu globalnego ani lokalnego, zawsze nadpisuje i pokazuje ostatnią zadeklarowaną wartość
+
+/*
+//przykład 3
+let i = 0;
+for (let i = 0; i < 10; i++) { //tu już tworzy się lokalny zakres, te i są osobne od siebie
+	//let i = 10; //to też jest osobny zakres
+	//console.log(i);
+		if (i < 4) {
+			i = 10;
+			//console.log("i wewnątrz instrukcji warunkowej, w pętli " + i);
+		}
+} //w tym przypadku pętla wykona się tylko raz, bo przy pierwszym wykonaniu robi się if, które nadpisuje wartość i jako 10 i wyświetla się console.log i wynik tego inkrementuje się i daje 11, przez co warunek pętki for (i < 10) nie jest już spełniony,
+*/
+
+/*
+//przykład 3.1
+let i = 0;
+for (let i = 0; i < 10; i++) { 
+		if (i < 4) {
+			let i = 20;
+			console.log("i wewnątrz instrukcji warunkowej, w pętli " + i);
+		} //if działa cztery razy i zwróci "i wewnątrz instrukcji warunkowej, w pętli 20"
+}
+*/
+
+//przykład 3.2
+let i = 0;
+for (let i = 0; i < 10; i++) { 
+	const inFor = "wewnątrz pętli";
+		if (i < 4) {
+			//inFor = "wewnątrz pętli i wewnątrz instrukcji warunkowej"; //taki zapis wywoła błąd, bo const się nie nadpisuje
+			const inFor = "wewnątrz pętli i wewnątrz instrukcji warunkowej"; //taki zapis jest ok, bo tworzymy nową zmienną lokalną
+			//console.log(inFor);
+		} 
+}
+
+/*
+//przykład 6, zakres zagnieżdżony w innym zakresie
+let example1 = "globalna";
+if (true) {
+	let example2 = "zakres lokalny, dla którego zakresem zewnętrznym jest zakres globalny";
+	if (true) {
+		let example3 = "zakres lokalny, dla którego zakresem zewnętrznym jest inny zakres lokalny";
+			console.log(example1); //zwraca: globalna
+			console.log(example2); //zwraca: zakres lokalny, dla którego zakresem zewnętrznym jest zakres globalny
+			console.log(example3); //zwraca: zakres lokalny, dla którego zakresem zewnętrznym jest inny zakres lokalny
+	
+	}
+}
+*/
+
+//przykład 6.1
+let example1 = "globalna";
+if (true) {
+	let example2 = "zakres lokalny, dla którego zakresem zewnętrznym jest zakres globalny";
+	if (true) {
+		example1 = "nowa wartość";
+		let example3 = "zakres lokalny, dla którego zakresem zewnętrznym jest inny zakres lokalny";
+			console.log(example1); //zwraca: "nowa wartość
+			console.log(example2); //zwraca: zakres lokalny, dla którego zakresem zewnętrznym jest zakres globalny
+			console.log(example3); //zwraca: zakres lokalny, dla którego zakresem zewnętrznym jest inny zakres lokalny
+	
+	}
+}
