@@ -1,0 +1,54 @@
+const dog = {
+	name: 'Fafik',
+	age: 9,
+	'eye color': 'black',
+	barking: function() {
+		//console.log("Hau Hau!");
+	},
+	//ES6
+	squeaking() {
+		//console.log('aaa uu eee');
+	},
+}
+
+dog.castrated = false;
+dog.childrens = ['bobik', 'muszka'];
+dog.castrated = true;
+
+//console.log(dog.name);
+dog.barking();
+dog.squeaking();
+
+delete dog.childrens[0];
+
+//odwołanie do obiektu w innej funkcji
+let value = 1;
+const result = {
+	value: 1,
+}
+
+function plus() {
+	value++;
+	result.value++;
+	//return; jeśli chcemy coś zwrócić
+}
+
+//odwołanie się do obiektu w metodzie this
+/*const counter = {
+	score: 0,
+	increment: function() {
+		counter.score++;
+		console.log(counter.score);
+	}
+}
+*/
+
+//odwołanie się do obiektu w metodzie this
+const counter = {
+	score: 0,
+	increment: function() {
+		this.score++;
+		console.log(this.score);
+	}
+}
+
