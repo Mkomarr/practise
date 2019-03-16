@@ -1,0 +1,29 @@
+//inna składnia i możliwość wstrzyknięcia kodu js w string
+const yourName = "Ala"
+const greeting = `Cześć ${yourName}!`; //ES6
+const greeting2 = "Cześć " + yourName + "!"; //ES5
+
+//możliwość użycia wyrażenia
+const user1 = 29;
+const user2 = 45;
+const user3 = 34;
+
+//console.log(`średni wiek użytkowników to ${(user1 + user2 + user3) / 3}, a łączny wiek to ${user1 + user2 + user3} lat`);
+
+//pobranie i wyświetlanie aktualnej daty
+console.log(`Obecnie jest ${new Date().toLocaleString()}`);
+
+//obliczanie
+const price = 80.99;
+const tax = 23;
+
+console.log(`Do zapłaty: ${(price + (price * tax) / 100).toFixed(2)} złotych brutto`);
+
+//wykorzystanie operatora trójwarunkowego ?
+console.log(`Dzisiejsza cena netto jest ${price >= 80 ? "wysoka" : "niska"}.`);
+
+//inkremetacja/dekrementacja
+
+let itemName = "tv";
+let items = 20;
+console.log(`Właśnie sprzedałem jeden ${itemName}. Na stanie jest jeszcze ${--items}`);
