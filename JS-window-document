@@ -1,0 +1,23 @@
+//window
+window.innerHeight; //wysokość strony w pixelach
+window.scrollY; //o ile zeskrolowane - np. do popupów wykorzystać przy if
+/*
+window.setTimeout(() => {//funkcja wyświetlająca alert po 5 sekundach
+alert("minęło 5 sekund")}, 5000);
+*/
+let timer = 0;
+//window.setInterval(() => console.log(++timer), 2000);
+
+//przykład wywołania cyklu regularnego za pomocą setTimeout
+const showTime = function() {
+	time +=5;
+	console.log(`Już ${time} sekund tu jesteś`);
+	setTimeout(showTime, 5000); //to jest koniecznie, bo jeśli wywołamy funkcję tylko raz, to się wykona tylko raz
+}
+let time = 0;
+setTimeout(showTime, 5000);
+
+//document
+document.title;
+document.domain;
+document.body;
