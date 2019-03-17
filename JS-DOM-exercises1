@@ -1,0 +1,211 @@
+
+//robienie tablicy z pobranych elementów
+const imag = Array.from(document.images);
+const imgs2 = [...document.images];
+
+//metody pobierające jeden element 
+document.querySelector("li:nth-child(2)");
+document.getElementById('first');
+
+//metody pobierające jeden element - inny przykład
+document.querySelector("#car");
+document.getElementById('car');
+
+//metody poierające wszystkie pasujące elementy
+document.querySelectorAll("* ul>li"); //nde list
+document.getElementsByTagName("li");
+document.getElementsByClassName("even");
+
+//tworzenie tablicy z danych
+const liList = document.querySelectorAll('li');
+const liArray = [...liList];
+const liArray2 = Array.from(liList);
+
+//pobieranie atrybutów z elementów
+const h2 = document.querySelector('h2');
+//console.log(h2.getAttribute('class'));
+//console.log(document.querySelector('h2').getAttribute('data-color'));
+
+const h2Text = h2.textContent;
+const h2HTML = h2.innerHTML;
+
+//sprawdzanie czy dany obiekt zawiera klasę
+//console.log(h2.classList);
+h2.classList.contains("title"); //jeśli ma taką klasę, zwracamy true, jeśli nie flase
+
+//modyfikacja elementów i stylów
+const firstLi = document.querySelector('li:first-child');
+firstLi.textContent = "Nowa zawartość tekstowa";
+console.log(firstLi);
+firstLi.style.fontSize = "40px"; //modyfikacja stylów
+firstLi.style.backgroundColor = "#ccc";
+
+//dodawanie klas
+firstLi.classList.contains("space"); //sprawdzenie, nie ma - false
+firstLi.classList.toggle("space");  //toggle dodaje klasę jeśli jej nie ma, albo zabiera, jeśli jest
+firstLi.classList.add("space");
+firstLi.classList.remove("space");
+
+firstLi.className = "super"; //ta metoda nadpisuje nową klasę, lub klasy
+firstLi.id = ""; //odwołanie do id elementu i nadpisywanie wartości
+
+firstLi.setAttribute('title', 'Uwaga, ważne'); //dodawanie atrybutów
+firstLi.setAttribute('class', 'nowa klasa'); //nadpisuje klasę
+
+//modyfikowanie wielu elementów za pomocą pętli i querySelector
+/*
+const liItems = document.querySelectorAll("li"); //przy tym tagu od razu powstaje obiek tablico podobny
+for (let i = 0; i < liItems.length; i++) {
+	liItems[i].style.fontSize = "40px";
+	liItems[i].classList.add('red');
+}
+
+//modyfikowanie wielu elementów za pomocą forEach
+liItems.forEach(function(liItem) {
+	liItem.style.textDecoration = "underline";
+})
+*/
+
+//modyfikowanie wielu elementów za pomocą pętli i getElementsByTagName
+const liItems = [...document.getElementsByTagName("li")]; //przy tym tagu musimy stworzyć tablicę
+for (let i = 0; i < liItems.length; i++) {
+	liItems[i].style.fontSize = "40px";
+	liItems[i].classList.add('red');
+}
+
+//modyfikowanie wielu elementów za pomocą forEach
+liItems.forEach(function(liItem) {
+	liItem.style.textDecoration = "underline";
+})
+
+//nasłuch zdarzeń - scroll
+/*
+window.addEventListener("scroll", function() {
+	console.log("skroluje"); //można też es6 i fat arrow
+});
+
+//podwójne kliknięcie w ES6
+window.addEventListener("dblclick", () => 
+	console.log("podwójne kliknięcie")
+	);
+	
+//klik
+document.body.addEventListener("click", () => 
+	console.log("kliknięcie")
+	);
+	*/
+
+//można też zdeiniować funkcję poza metodą
+/*
+const showScroll = () => {
+	console.log("skroll");
+}
+window.addEventListener("scroll", showScroll);
+
+ALBO starym sposobem
+window.addEventListener("scroll", showScroll);
+function showScroll() {
+	console.log(skrol");
+};
+*/
+
+//przykłady działania - po kliknięciu w element dodaj coś
+/*
+document.querySelector('h1').addEventListener("click", function() { this.textContent += "+"; 
+});
+
+//mouseMove
+document.querySelector('h1').addEventListener("mousemove", function() { 
+this.textContent += "+"; 
+console.log("ruch myszką");
+});
+*/
+
+//przykład 2
+/*
+const h1 = document.querySelector('h1');
+const addText = function() {
+	this.textContent += " :) ";
+	this.classList.toggle("red");
+}
+h1.addEventListener('click', addText);
+*/
+
+//powyższa funkcja tylko inaczej zapisana, próbowałam uzyć fat arrow, ale nie działa z this, a nie wiem jak inaczej zdefiniować gdzie ma się zmienić textContent
+const h1Double = document.querySelector('h1').addEventListener("click", function() {
+this.textContent += ` :)`;
+this.classList.toggle("red");
+});
+
+//przykład 3 - pobranie wszystkich elementów metodą forEach - uwaga, nie jest możliwe jednorazowo dla całej tablicy nasłuchu
+/*
+const items = document.querySelectorAll("li");
+const addClassRed = function() {
+	//console.log("klik li");
+}
+items.forEach((item) => {
+	item.addEventListener("click", addClassRed)
+});
+*/
+
+/*
+//tworzenie i dodawanie elementów do strony
+const liElement = document.createElement('li');
+liElement.textContent = "Ostatni";
+liElement.style.backgroundColor = "yellow";
+document.querySelector('ul').appendChild(liElement);
+*/
+
+/*
+//po kliknięciu w którykolwiek li dodaje się kolejny li
+const liClicks = document.querySelectorAll("li"); //wyszukujemy element, który jest nam potrzebny
+const adNewLi = function() { //określamy funckję, jaka ma się robić na tym elemencie, czyli dodawanie nowego li
+	const liElement = document.createElement('li');
+	liElement.textContent = "Kolejny";
+	document.querySelector('ul').appendChild(liElement);
+}; 
+liClicks.forEach((liClick) => { //określamy akcję, po której ma się wykonywać funkcja dla każdego znalezionego elementu (forEach), czyli kliknięcie na każdy li
+	liClick.addEventListener("click", adNewLi)
+});
+*/
+
+/*
+//po kliknięciu w ostatni li dodaje się kolejny li
+const liClicks2 = document.querySelector("li:last-child");
+const addNewLi2 = function() {
+	const liElement2 = document.createElement('li');
+	liElement2.textContent = "Dodaj po ostatnim";
+	document.querySelector('ul').appendChild(liElement2);
+};
+liClicks2.addEventListener("click", addNewLi2);
+*/
+
+/*
+//nowy zapis tej samej funkcji co wyżej
+const liClicks3 = document.querySelector("li:last-child").addEventListener("click", function() {
+	const liElement3 = document.createElement("li"); //stwórz nowy element
+	liElement3.textContent = "Dodaj po ostatnim 2"; //nadaj mu treść
+	liElement3.classList.add("red"); //dodaj styl css
+	liElement3.style.fontSize = "40px"; //zmien css inlineowo
+	document.querySelector('ul').appendChild(liElement3); //znajdż listę ul i dodaj do niej stworzony element
+});
+*/
+
+//dodaj nowy element po podwójnym kliknięciu w ostatni li
+const doubleClickAndAdd = document.querySelector('li:last-child').addEventListener('dblclick', function() {
+		const liAddElement = document.createElement('li');
+		liAddElement.textContent = "Dodane po double click";
+		liAddElement.classList.add('red');
+		liAddElement.style.fontSize = '40px';
+		document.querySelector('ul').appendChild(liAddElement);
+		});
+
+//dodawanie nowego diva na końcu strony
+const divElement = document.createElement('div');
+divElement.textContent = "Ostatni div";
+divElement.classList.add('red');
+divElement.style.fontSize = '40px';
+//document.querySelector('body').appendChild(divElement); //obydwie metody są ok
+document.body.appendChild(divElement);
+
+//obiekt window
