@@ -1,0 +1,33 @@
+document.body.style.height = "10000px";
+const divGR = document.createElement('div');
+document.body.appendChild(divGR);
+
+divGR.style.position = 'fixed';
+divGR.style.left = 0;
+divGR.style.top = 0;
+divGR.style.width = '100%';
+divGR.style.backgroundColor = 'green';
+let size = 10;
+divGR.style.height = size + 'px';
+
+let redGreen = true;
+
+const changeHeight = function() {
+        
+    if (redGreen) {
+        size += 5;
+    } else {
+        size -= 5;
+    }
+    divGR.style.height = size + 'px';
+
+    if (size > window.innerHeight / 2) {
+        redGreen = !redGreen;
+        divGR.style.backgroundColor = 'red';
+    } else if (size <= 0) {
+        redGreen = !redGreen; //uwaga - tu też musi być też z !
+        divGR.style.backgroundColor = 'green';
+    }
+
+}
+window.addEventListener('scroll', changeHeight);
