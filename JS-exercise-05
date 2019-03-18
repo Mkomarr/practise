@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+	<head>
+	<meta charset="utf-8">
+	<title>Projekt 2</title>
+	<style>
+		button {
+		display: block;
+		margin: 20px auto;
+		}
+		
+		div {
+		width: 30px;
+		height: 30px;
+		background-color: black;
+		margin: 5px;
+		float: left;
+		color: white;
+		text-align: center;
+		line-height: 30px;
+		border: 2px solid black;
+		}
+		
+		.bigger {
+		font-size: 25px;
+		}
+	</style>
+	</head>
+	<body>
+		<button>Utwórz element</button>
+		<ul>
+		</ul>
+<script>
+	let number = 1;
+	const btn = document.querySelector('button').addEventListener('click', () => {
+		//console.log("działa");
+		const addLi = document.createElement('li');
+		addLi.textContent = number;
+		document.querySelector('ul').appendChild(addLi);
+		if (number % 3 == 0) {
+				addLi.classList.add('bigger');
+			}
+		number = number + 2;
+		});
+
+</script>
+	</body>
+</html>
