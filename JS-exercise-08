@@ -1,0 +1,38 @@
+const btn = document.querySelector('button');
+let liList = document.querySelectorAll('li');
+let fSize = 10;
+
+
+//pierwszy sposób
+
+const show = function() {
+        liList.forEach((liItem) => { 
+            liItem.style.display = 'block';
+            liItem.style.fontSize = fSize + 'px';
+            })
+            fSize++;
+};
+btn.addEventListener('click', show);
+/*
+btn.addEventListener('click', () => {
+    liList.forEach((liItem) => {
+        liItem.style.display = 'block'
+        liItem.style.fontSize = fSize + 'px';
+    });
+    fSize++;
+});
+*/
+
+//drugi sposób
+/*
+btn.addEventListener('click', () => {
+for (let i = 0; i < liList.length; i++) {
+    if (liList[i].style.display === "") { //opcjonalne sprawdzenie, czy i ma jakikolwiek przypisany styl, można to też zapisać (!liList[i].style.display)
+    liList[i].style.display = 'block'; 
+    }
+    liList[i].style.fontSize = `${fSize}px`;
+    }
+    fSize++;
+});
+*/
+
