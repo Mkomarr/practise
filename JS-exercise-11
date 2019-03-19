@@ -1,0 +1,40 @@
+//wykryć kliknięcie, gdzie nastąpiło, i nadać kolor w zależności czy parzyste czy nine parzyste
+/*document.body.addEventListener('click', (e) => {
+    let x = e.clientX;
+    let y = e.clientY;
+    console.log(x, y);
+
+    if ( x, y % 2 == 0) {
+        document.body.style.backgroundColor = 'red';
+    } else if (x, y % 3 == 0) {
+        document.body.style.backgroundColor = 'blue';
+    } else {
+        document.body.style.backgroundColor = 'green';
+        };
+});
+*/
+
+//inaczej
+document.body.addEventListener('click', (e) => {
+    console.log(e.clientX, e.clientY)
+    const color = getColor(e);
+    document.body.style.backgroundColor = color;
+});
+
+const getColor = (event) => {
+    if (event.clientX % 2 === 0) {
+        if (event.clientY % 2 === 0) {
+            return "red";
+        } else {
+            return "green";
+        }
+    } else {
+        if (event.clientY % 2 === 0) {
+            return "green";
+        } else {
+            return "blue";
+        }
+              
+    }
+
+}
