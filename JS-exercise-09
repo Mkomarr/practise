@@ -1,0 +1,35 @@
+let size = 10;
+let orderElement = 1;
+
+const init = () => {
+const btn = document.createElement('button');
+const btnReset = document.createElement('button');
+btn.textContent = "Dodaj 10 elementów listy";
+btnReset.textContent = "Wyczyść";
+document.body.appendChild(btn);
+document.body.appendChild(btnReset);
+let ulList = document.createElement('ul');
+ulList.style.listStyle = 'none';
+document.body.appendChild(ulList);
+
+btn.addEventListener('click', createLiElements);
+btnReset.addEventListener('click', cleanList);
+};
+
+const createLiElements = () => {
+        for (let i = 0; i < 10; i++) {
+        const liList = document.createElement('li');
+        liList.textContent = `Element nr ${orderElement++}`;
+        liList.style.fontSize = `${size++}px`;
+        document.querySelector('ul').appendChild(liList);
+        liList.setAttribute('order', orderElement);        
+        }
+}
+
+const cleanList = () => {
+    document.querySelector('ul').innerHTML = "";
+    size = 10;
+    orderElement = 1;
+};
+
+init()
