@@ -1,0 +1,65 @@
+const input = document.querySelector('input');
+const passwords = ['jedEN', 'DwA'];
+const messeges = ['super', 'działa!'];
+
+//moje rozwiązanie
+/*
+const showMessage = (e) => {
+const tekst = document.querySelector('div');
+tekst.textContent = ""; //polecenie: bądź zawsze pusty, chyba że hasło pasuje
+const mess = e.target.value;
+const messUp = mess.toUpperCase();
+    passwords.forEach((password, index) => {
+        const passwordUp = password.toUpperCase();
+        if (passwordUp == messUp) {
+            tekst.textContent = messeges[index];
+        }         
+})
+}
+input.addEventListener('input', showMessage);
+*/
+
+/*
+//drugie podobne, ale prostsze rozwiązanie
+const showMessage = (e) => {
+    document.querySelector('div').textContent = ""; //polecenie: bądź zawsze pusty, chyba że hasło pasuje
+        passwords.forEach((password, index) => {
+            if (password.toLowerCase() == e.target.value.toLowerCase()) { //zmiana następi tylko na czas tego porównania
+                document.querySelector('div').textContent = messeges[index];
+            }});
+    }
+    input.addEventListener('input', showMessage);
+    */
+
+    //3 rozwiązanie - trochę inaczej - zmiana tablicy forEach
+/*
+    passwords.forEach((password, index) => {
+    passwords[index] = password.toLowerCase();
+    console.log(passwords[index]);
+})
+
+const showMessage = (e) => {
+    document.querySelector('div').textContent = "";
+    const input = e.target.value.toLowerCase();
+    passwords.forEach((password, i) => {
+        if (password === input) {
+             document.querySelector('div').textContent = messeges[i];
+         }
+     });
+};
+input.addEventListener('input', showMessage);
+*/
+
+//4 rozwiązanie - jeszcze inaczj z map();
+const LCPasswords = passwords.map(password => password.toLowerCase());
+const div = document.querySelector('div');
+
+const showMessage = (e) => {
+    const textInput = e.target.value.toLowerCase();
+    for (let i = 0; i < LCPasswords.length; i++) {
+        if (textInput === LCPasswords[i]) {
+            div.innerHTML = messeges[i];
+        }
+    }
+};
+input.addEventListener('input', showMessage);
