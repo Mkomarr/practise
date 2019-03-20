@@ -1,0 +1,24 @@
+const btn = document.querySelector('button');
+const div = document.querySelector('div');
+const names = ["Jagienka", 'Asia', 'Kasia', 'Joasia', 'Daria', 'Kira', 'Anastazja'];
+const prefixs = ['Wydaje mi się, że', 'Mam wrażenie, że', 'Szczerze mówiąc to', 'Uważam, że', 'Jestem pewien, że'];
+
+const index = Math.floor(Math.random() * 7); //losuje randomową liczbę z przedziału i zaogrągla ją do pełnej
+console.log(names[index]); //zwraca w konsoli wynik losowania
+
+/* pierwsze rozwiązanie
+const nameGenerator = () => {
+    const indexName = Math.floor(Math.random() * names.length); 
+    const indexPrefix = Math.floor(Math.random() * prefixs.length); 
+    div.textContent = `${prefixs[indexPrefix]} najfajniejsze imię dla dziecka to ${names[indexName]}`;
+}
+
+btn.addEventListener('click', nameGenerator);
+*/
+
+const nameGenerator = () => {
+    const indexName = Math.floor(Math.random() * names.length); 
+    div.textContent = `${prefixs[Math.floor(Math.random() * prefixs.length)]} najfajniejsze imię dla dziecka to ${names[indexName]}`;
+}
+
+btn.addEventListener('click', nameGenerator);
