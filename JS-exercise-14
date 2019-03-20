@@ -1,0 +1,37 @@
+const input = document.getElementById('pass');
+const div = document.querySelector('.message');
+const passwords = ['user', 'wiosna'];
+const messages = ['Wyjechałam na zawsze.', 'Piękna pora roku'];
+
+
+input.addEventListener('input', function(e) {
+    // console.log(e.target.value);
+    // console.log(this.value);
+    // console.log(this);
+    /*
+    if (passwords === e.target.value) { //rozwiązanie dla jednego hasła, które nie musi być w tablicy
+        div.textContent = message;
+        e.target.value = ''; //usuwanie hasła po wpisaniu w input, jeśli jest prawidłowe
+    } else { 
+        div.textContent = "";
+    }
+    */
+    div.textContent = ""; //czyszczenie message gdy hasło jest nieprawidłowe, musi być tu, bo jeśli w else, to instrukcja wyczyści message od razu
+    const text = e.target.value; //zwraca zawartość pola formularza
+    //console.log(text);
+    passwords.forEach((password, index) => { //żeby wyświetlić konkretny element z tablicy podajemy drugi parametr
+        if(password === text) {
+            div.textContent = messages[index]; //i tu podajemy do którego indexu ma się odnosić
+            e.target.value = '';
+            console.log(password, index);
+        } 
+    })
+
+});
+
+input.addEventListener('focus', (e) => { //akcja aktywowania pola formularza, np. kliknięcie w niego
+    e.target.classList.add('active'); //można też użyć toggle
+})
+input.addEventListener('blur', (e) => { //akcja dezaktywowania pola formularza, np. odkliknięcie w inne miejsce
+    e.target.classList.remove('active');
+});
