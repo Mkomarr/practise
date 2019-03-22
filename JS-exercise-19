@@ -1,0 +1,44 @@
+let allAdvice = ['Walcz dalej', 'Poczekaj chwilę'];
+const btn = document.querySelector('.add');
+const input = document.querySelector('input');
+const reset = document.querySelector('.clean');
+const showMe = document.querySelector('.showAdvice');
+const h1 = document.querySelector('h1')
+const showOptions = document.querySelector('.showOptions')
+
+
+const showAdvice = (e) => {
+    e.preventDefault(); //to jest koniecznie inaczej po odświeżeniu strony wynik się resetuje
+    const newAdvice = input.value;
+    if (newAdvice.length) {
+        allAdvice.push(newAdvice); //uwaga - najpierw podajemy nazwę tablicy, dopiero później argument
+        alert(`Dodano ${newAdvice}`)
+        input.value = "";
+        console.log(allAdvice)
+    }
+}
+
+const resetAll = (e) => {
+    e.preventDefault();
+    allAdvice = [];
+    //inaczej można to zrobić allAdvice.length = 0;
+}
+
+const toDo = (e) => {
+    e.preventDefault();
+    const index = Math.floor(Math.random()*allAdvice.length);
+    let needToDo = allAdvice[index];
+    h1.textContent = needToDo;
+    //można inaczej h1.textContent = allAdvice[index];
+}
+
+const options = () => {
+    alert(allAdvice.join(', '));
+}
+
+
+
+btn.addEventListener('click', showAdvice);
+reset.addEventListener('click', resetAll);
+showMe.addEventListener('click', toDo);
+showOptions.addEventListener('click', options);
