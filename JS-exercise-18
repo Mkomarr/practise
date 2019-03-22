@@ -1,0 +1,24 @@
+const names = [];
+const div = document.querySelector('div');
+
+const addName = (e) => {
+    e.preventDefault();
+    const input = document.querySelector('input');
+    const newName = input.value;
+        if (input.value.length) { //sprawdzanie czy coś jest wpisane w pole, jeśli nie to false i nic się nie dzieje
+                for (name of names) {
+                    if (name === newName) {
+                        alert('to już jest');
+                        return;
+                    }
+                }
+            names.push(newName);
+            // console.log(names);
+            div.textContent += newName + ", ";
+            input.value = ""; //czyszczenie pola po wpisaniu wartości
+        }
+    
+}
+
+
+document.querySelector('button').addEventListener('click', addName);
