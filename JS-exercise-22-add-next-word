@@ -1,0 +1,39 @@
+const spnText = document.querySelector('.text');
+const spnCursor = document.querySelector('.kursor');
+const txt = ['12345', '6789', 'abcde']
+
+let iT = 0;
+let iL = -5;
+time = 100;
+//let letters = txt[iT][iL];
+
+const addLetter = () => {
+if (iL >= 0) { //opóźnienie wykonywania funkcji bo iL = -5
+    spnText.textContent += txt[iT][iL];
+}
+    iL++;
+
+    if (iL === txt[iT].length) {
+        iT++;
+            if (iT === txt.length) return;
+        
+        return setTimeout(() => { //return tu kończy działanie funckji i setTimeout rozpoczyna od nowa
+            iL = 0; //polecenie: zacznij liczyć od indexu 0
+            spnText.textContent = ""; //czyszczenie diva
+            addLetter(); //wywołanie ponowne funkcji, bo return ją zakończył
+        }, 2000);
+
+        
+    }
+setTimeout(addLetter, time)
+    
+}
+        
+addLetter();//pierwsze wywołanie
+ 
+
+//funkcja migającego kursora
+const cursorAnimation = () => {
+    spnCursor.classList.toggle('active')
+}
+setInterval(cursorAnimation, 400);
