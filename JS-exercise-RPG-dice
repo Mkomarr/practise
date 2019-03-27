@@ -1,0 +1,28 @@
+const k6 = document.querySelector('.k6');
+const k10 = document.querySelector('.k10');
+const k100 = document.querySelector('.k100');
+const chance = document.querySelector('.chance');
+
+const getResultK6 = () => {
+    const result = Math.floor(Math.random() * 6 + 1);
+    document.getElementById('k6').textContent = result;
+}
+const getResultK10 = () => {
+    const result = Math.floor(Math.random() * 10);
+    document.getElementById('k10').textContent = result;
+}
+const getResultK100 = () => {
+    const result = Math.floor(Math.random() * 100);
+    document.getElementById('k100').textContent = result;
+}
+const getResultChance = () => {
+    const k10Chance = Math.floor(Math.random() * 10);
+    const k100Chance = Math.floor(Math.random() * 100);
+    document.getElementById('chance').textContent = `K10: ${k10Chance} \n
+        K100: ${k100Chance}`;
+}
+
+k6.addEventListener('click', getResultK6);
+k10.addEventListener('click', getResultK10);
+k100.addEventListener('click', getResultK100);
+chance.addEventListener('click', getResultChance);
