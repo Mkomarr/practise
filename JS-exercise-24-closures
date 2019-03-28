@@ -1,0 +1,55 @@
+/*
+let number = 0;
+
+const add = () => {
+    number++;
+    document.body.textContent = `aktualny stan licznika to ${number}`;
+}
+document.addEventListener('click', add);
+*/
+
+//closures przykład
+/*
+function x() {
+    let number = 0;
+ function y() {
+    console.log(number);
+ } 
+ return y
+}
+const example = x(); //zwróci funkcję y
+example() //można ją wywołać
+*/
+
+//counter
+/*
+const add = (start = 0) => { //domyślne ustawienie parametru
+    let number = start;
+    return () => {
+     //number++;
+     document.body.textContent = `Aktualny stan licznika kliknięć to ${++number}`; //najpierw wyświetla a później podnosi o 1
+    }
+}
+const counter = add();
+const counterFrom5 = add(5)
+document.addEventListener('click', counter);
+*/
+
+//exercise sprawdzanie, czy użytkownik może kupić piwo
+const user = (name = "", age) => {
+    let userName = name;
+    let userAge = age;
+
+    function showName() {
+        console.log(`Cześć ${userName}, ${userAge >= 18 ? 'możesz kupić piwo.' : 'nie możesz kupić piwa.'}`);
+    }
+    return showName
+}
+const mieszko = user('Mieszko', 20);
+const jagienka = user('Jagienka', 17);
+mieszko();
+jagienka();
+
+const noName = user();
+noName(); //wywoła funkcję i pod age podłoży undefined, a name to będzie pusty string
+
