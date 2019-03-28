@@ -1,0 +1,29 @@
+const endTime = new Date('2020-01-25 22:34:00').getTime();
+const spanD = document.querySelector('span.d');
+const spanH = document.querySelector('span.h');
+const spanM = document.querySelector('span.m');
+const spanS = document.querySelector('span.s');
+
+setInterval(() => {
+    const nowTime = new Date().getTime(); //obliczanie aktualnego czasu w milisekundach, robi to przez zwrócenie milisekund, które upłynęły od 1 stycznia 1970 roku
+    //const time = Math.floor((endTime - nowTime)/1000);
+
+    //odejmujemy datę określoną przez nas od czasu aktualnego
+    const time = endTime - nowTime;
+
+    //zamieniamy zwrócone milisekundy na dni godziny, minuty i sekundy
+    const days = Math.floor((endTime / (1000 * 60 * 60 * 24)) - (nowTime / (1000 * 60 * 60 * 24)));
+    
+    const hours = Math.floor((endTime / (1000 * 60 * 60) - nowTime / (1000 * 60 * 60)) % 24);
+
+    const minutes = Math.floor((endTime / (100 * 60) - nowTime / (1000 * 60)) % 60);
+
+    let secs = Math.floor((endTime / 1000 - nowTime / 1000) % 60);
+    secs = secs < 10 ? `0${secs}` : `${secs}`;
+
+    //pokazujemy wyniki w odpowiednich miejscach
+    spanD.textContent = days;
+    spanH.textContent = hours;
+    spanM.textContent = minutes;
+    spanS.textContent = secs;
+}, 1000)
