@@ -1,0 +1,27 @@
+
+const timer = () => {
+    let second = 0;
+    document.body.textContent = 0 + ' sekund';
+    return () => {
+        document.body.textContent = `${++second} sekund`;
+    }
+}
+const clock = timer() //tutaj funkcja timer przestaje istnieć, a wartość uzyskaną przechowuje clock
+//setInterval(clock(), 1000); //tak nie dziala bo ()
+setInterval(clock, 1000); //tak dziala
+
+
+//inaczej ta sama funkcja
+/*
+const clock = () => {
+    let seconds = 0;
+    document.body.textContent = `0 sekund`;
+     const timer = () => {
+         seconds++;
+         document.body.textContent = `${seconds} sekund`;
+     }
+     return timer
+}
+const start = clock()
+setInterval(start, 1000);
+*/
