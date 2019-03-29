@@ -1,0 +1,27 @@
+const btnStart = document.querySelector('.main');
+const btnReset = document.querySelector('.reset');
+let counter = document.querySelector('.stoper');
+let seconds = 0;
+let counting;
+
+const startCounting = () => {
+    if (btnStart.textContent === 'Start') {
+        btnStart.textContent = 'Pauza';
+         counting = setInterval(() => {
+          let timer = seconds++ / 100;
+          counter.textContent = timer.toFixed(2);
+         }, 10)
+    } else {
+     btnStart.textContent = 'Start';
+      clearInterval(counting);
+     }
+};
+const resetCounting = () => {
+    clearInterval(counting);
+    counter.textContent = '---';
+    seconds = 0;
+    btnStart.textContent = 'Start';
+}
+
+btnStart.addEventListener('click', startCounting);
+btnReset.addEventListener('click', resetCounting);
