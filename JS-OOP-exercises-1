@@ -1,0 +1,86 @@
+//konstruktor
+const Car = function(name) {
+    this.name = name;
+}
+
+//konstruktor można też tworzyć tak: function Car() {} ale ona podlega hoistingowi
+
+//tworzenie instancji/egzemplarz
+const maluch = new Car('maluch');
+const polonez = new Car('polonez');
+//teraz tworzy się:
+//1. nowy pusty obiekt
+//2. wiązanie this z utworzonym obiektem
+//3. powstaje właściwość __proto__ czyli przypisanie egzemplarza do prototypu z kontsurktora, dzięki czemu następuje dziedziczenie
+//4. funkcja się wywołuje na nowym obiekcie i wynik przypisuje do zmiennej
+
+//zmiana nazwy, przypisanie nowej
+maluch.name = 'zabytek';
+
+/*----------------------PROTOTYPY----------------------*/
+
+/*
+taki sposób oznacza, że każdorazowo wszystkie te metody i właściwości są przypisywane do nowych obiektów, są kopiowane przez co zajmują pamięć, trzeba więc napisać inaczej, wywalic metodę do prototypu, poniżej
+const Person = function(name, age) {
+    this.name = name;
+    this.age = age;
+    this.children = [];
+    this.addChildren = function(name) {
+        this.children.push(name);
+    }
+}
+*/
+const Person = function(name, age) {
+    this.name = name;
+    this.age = age;
+    this.children = [];
+}
+Person.prototype.addChildren = function(name) {
+        this.children.push(name);
+    }
+    //w powyższy sposób pzypisujemy tylko metody
+
+const arek = new Person('arek', 20);
+const monika = new Person('monika', 30);
+
+arek.addChildren('asia');
+
+//ćwiczenia
+function Player() {
+}
+class User {
+}
+
+Player.prototype.age = 25;
+
+const janek = new Player();
+janek.constructor
+
+const marta = new User();
+marta.constructor
+
+const darek = new janek.constructor() //działa jak new Player();
+
+//----------DODANIE ELEMENTÓW DO PROTOTYPU------------------------//
+function Citizen(country, citizenship) {
+    this.country = country;
+    this.citizenship = citizenship;
+    // this.changeCitizenship = function(citizenship) {
+    //     this.citizenship = citizenship;
+    //     console.log(`zmiana za pomocą metody w instancji na ${this.citizenship}`)
+    // }
+}
+Citizen.prototype.changeCitizenship = function(citizenship) {
+        this.citizenship = citizenship;
+        //console.log(`zmiana za pomocą metody w prototypie na ${this.citizenship}`)
+    }
+
+const zenek = new Citizen('Polska', 'polskie');
+zenek.changeCitizenship('rosyjskie'); //pamiętać, że this zostaje przypisane dopiero teraz do zenka, w chwili wywołania
+
+//rozszerzanie prototypu także wbudowanych konstruktorów
+const arr = [5,6,7,8];
+Array.prototype.delete = function(index) {
+    return this.splice(index, 1);
+}
+
