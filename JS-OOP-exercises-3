@@ -1,0 +1,48 @@
+/*--------------------------klasa Animal dziedziczy po Object-----------------*/
+class Animal {
+    constructor(age, name) {
+        this.age = age;
+        this.name = name;
+    }
+    breathe() {
+        console.log('zwierzę oddycha');
+    }
+}
+const zwierze = new Animal(2, 'max');
+
+zwierze.__proto__ == Animal.prototype
+
+/*-----------nowa klasa Mammal, która DZIEDZICZY po Animal------------------*/
+
+class Mammal extends Animal { //extends wywołuje konstruktor Animal, czyli super() to dokładnie metoda z construktor Animal
+    constructor(age, name, hair) { 
+        super(age, name) //nazwa nie ma znaczenia, ale lepiej żeby się koarzyła; wywołujemy konstruktor klasy nadrzędnej, kolejność ma znaczenie
+        this.hair = hair;
+    }
+    drinkMilk() {
+        console.log('ssaki piją mleko');
+    }
+    speak() {
+        console.log('Jak mówi ssak?');
+    }
+}
+const ssak = new Mammal(3, 'Payne', 'fluffy');
+//ssak.breathe();
+ssak.drinkMilk();
+
+
+/*-------------------------kolejna klasa dziedzicząca po Mammal-------------------------------*/
+
+class Human extends Mammal {
+    constructor(age, name, hair, language) {
+        super(age, name, hair); //wywołamy najpierw Animal, potem Mammal, a dopiero później Human, czyli wywołujemy w efekcie 3 konstruktory, uwaga - nawet jeśli nie napiszemy constructor() {super()} to i tak się to automatycznie wywoła, ale już jesli mamy constructor to super() musi się pojawić
+        this.language = language;
+    }
+    speak() {
+        console.log('Człowiek mówi.');
+    }
+}
+const man = new Human(4, 'Piotr', 'brunet', 'EN');
+man.speak(); //weźmie metodę z najbliższego dla siebie prototypu, przykryje
+ssak.speak();
+
