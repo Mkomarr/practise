@@ -1,0 +1,217 @@
+//'use strict'
+/*---------------------zakres globalny-----------------------------*/
+
+this //obiektem globalnym jest windows
+
+const fn = function() {
+    console.log(this.example); 
+}
+//fn(); //this odnosi się do window i zwraca undef, bo window nie ma example, chyba że jest use strict, wtedy wywali błąd
+
+/*---------------------------tryb ścisły--------------------------*/
+
+//można definionwać dla obiektu albo całego pliku
+//'use strict' nie pozwoli przypisać obiektu globalnego i wywali błąd 'cannot read property of undefined
+
+/*---------------------ćwiczenie z zakresami this------------------------*/
+const fn1 = function() {
+    console.log(this.name); 
+}
+const obj = {
+    name: 'Adam',
+    fn1: fn1, //przypisujemy do właściwości fn1 funkcję fn1
+    showName: fn1,
+}
+
+const fun = fn1;
+
+//fun(); wywali błąd bo this próbuje przypisać się globalnie, a use strict nie pozwala
+// obj.fn1();
+// obj.showName();
+// const outside = obj.showName();
+//outside(); //wywali błąd bo this próbuje przypisać się globalnie a use strict
+
+/*---------------------ćwiczenie 2 z zakresami this------------------------*/
+
+document.addEventListener('click', function() {
+    console.log(this); //wiązanie ustawione jest z obiektem, który nasłuchujemy
+    const inside = function() {
+        console.log(this)//ten this nawiązuje do window bez use stict, z use strict wywali undefinded, bo zrywamy wiązanie z obiektem globalnym
+    }
+    inside();
+})
+
+/*------------------this i funkcje uniwersalne------------------------------*/
+
+function showName1() {
+    console.log(this.name) //odwołanie do zakresu window
+}
+
+const karol = {
+    name: 'Karol',
+    showName1: showName1,
+}
+const tatiana = {
+    name: 'tatiana',
+    showName1: showName1
+}
+// karol.showName1();
+// tatiana.showName1();
+
+/*-----------------miejsce wywołania funkcji a this-----------------------*/
+
+function one() {
+    //'use strict' //wywala błąd, undefined bo use strict
+    console.log(this);
+    this.name = 'pierwsza'; //zakres window
+    return this.name;
+}
+
+const obj1 = {
+    two: one, //referencja do funkcji one
+    four: function() {
+        console.log(this) //wiąże z obj1
+    }
+}
+//obj1.two(); //this z funkcji one łączy teraz z obj1
+
+const three = obj1.two //przypisujemy funkcję one ale przez referencję z obiektem
+//three(); //this wsazuje na window, bo decyduje miejsce wywołania - wywołujemy w window, nie ma znaczenia że funkcja znajduje się wewnątrz obiektu, jeśli byćmy wywołali wewnątrz obiektu, to this wskazywałoby na obiekt
+
+const five = obj1.four
+//five(); //wskazuje na window
+
+/*----------------------------wiązanie domyślne------------------------------*/
+const thisExample = function() {
+    //'use strict'
+    console.log(this.example, this); //wiąże z window
+    const inside = function() {
+        console.log(this.example, this)
+    }
+    inside()
+}
+//thisExample() //obydwie funkcje tworzą wiązanie domyślne
+
+/*-------------------------wiązanie niejawne----------------------------*/
+const user = {
+    age: 45,
+    showName() { //nowy sposób deklaracji funkcji
+        console.log(this.age)
+    }
+}
+//user.showName() //this wiąże z user
+
+const stefan = {
+    age: 30,
+    showName: user.showName
+}
+//stefan.showName() //this wiąże ze stefan
+
+/*------------------------wiązanie jawne------------------------------*/
+
+const human = {
+    pesel: 20202020210
+}
+
+const showPesel = function() {
+    console.log(`Twój pesel to: ${this.pesel}`);
+}
+//showPesel(); //odwoła się do window
+//showPesel.call(human);
+
+const showUser = function(name) {
+    console.log(`użytkownik ${name} ma pesel: ${this.pesel}`);
+}
+//showUser.call(human, 'Tomasz')
+
+/*--------------------wiązanie twarde---------------------------------*/
+
+showPesel.bind(human);
+const showPeselUser = showPesel.bind(human);
+//showPeselUser();
+
+/*-----------------wiązanie z new-------------------------------------*/
+class User {
+    constructor(name) {
+        this.name = name;
+    }
+}
+const stasiek = new User('stasiek');
+
+/*-------------------this a funkcja strzałkowa => -------------------*/
+
+const user2 = {
+    age: 45,
+    showAge() {
+        console.log(this.age);
+    },
+    showAge2: () => {
+        console.log(this.age);
+    } 
+}
+//user2.showAge()
+//user2.showAge2() //nie stworzył wiązania, odnosi się do window i zwraca undefined
+
+/*----------------- utrata wiązania -----------------------------*/
+/*
+const szarik = {
+    children: ['fafik', 'żaba'],
+    showChildren: function() {
+        this.children.forEach(function(child, index) {
+            console.log(this.children[index]); //w tym momencie this traci wiązanie (każda metoda tworzy nowy this) i wraca do domyslnego i w consoli jest błąd
+        })
+    },
+}
+szarik.showChildren();
+*/
+
+/*--------------ponowne nawiązanie this - that ----------------------*/
+/*
+const szarik = {
+    children: ['fafik', 'żaba'],
+    showChildren: function() {
+        const that = this; //na tym etapie this jest prawidłowy, więc przypisujemy go do zmiennej
+        this.children.forEach(function(child, index) {
+            console.log(that.children[index]); //przypisanie this do obiektu that
+        })
+    },
+}
+szarik.showChildren();
+*/
+
+/*----------------ponowne nawiązanie za pomocą pętli for of-------------*/
+/*
+const szarik = {
+    children: ['fafik', 'żaba'],
+    showChildren: function() {
+        for (child of this.children) { //pętla nie tworzy nowego thisa, ciągle korzysta z tamtego,
+            console.log(child)
+        }
+        }
+    }
+szarik.showChildren();
+*/
+
+/*------- ponowne nawiązanie z wykorzystaniem arrow function => -----------*/
+/*
+const szarik = {
+    children: ['fafik', 'żaba'],
+    showChildren: function() {
+        this.children.forEach((child, index) => { //funkcja strzałkowa nie tworzy własnego thisa, tylko go dziedziczy, w tym przypadku jest to plus
+            console.log(this.children[index]); 
+        })
+    },
+}
+szarik.showChildren();
+*/
+
+/*---------ponowne wiązanie poprzez bind------------------*/
+const szarik = {
+    children: ['fafik', 'żaba'],
+    showChildren: function() {
+        this.children.forEach(function(child, index) {
+            console.log(this.children[index]); 
+        }.bind(this))
+    },
+}
+szarik.showChildren();
